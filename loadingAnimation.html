@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>纯css圆环loading动画</title>
+  <style>
+    html, body { margin: 0; padding:0; background-color: #aaaaaa;}
+    .parent{
+      position: fixed;
+      margin: auto;
+      left: 0;right: 0;top: 0;bottom: 0;
+      width: 100px;
+      height: 100px;
+    }
+    .rightRing{
+      position: absolute;
+      width: 100%;
+      height:100%;
+      top: 0;
+      left: 0;
+      border: 5px solid #3c00ea;
+      border-radius: 100px;
+      clip:rect(0,100px,100px,50px);/*不支持百分比*/
+      box-sizing:border-box;
+
+      animation: rightRing_animation linear 4s infinite;
+      -webkit-animation: rightRing_animation linear 4s infinite;
+    }
+    .rightMask{
+      position: absolute;
+      width: 50%;
+      height:100%;
+      top: 0;
+      left: 50%;
+      background-color: #aaaaaa;/*需和背景色保持一致*/
+    }
+    .leftRing{
+      position: absolute;
+      width: 100%;
+      height:100%;
+      top: 0;
+      left: 0;
+      border: 5px solid #3c00ea;
+      border-radius: 100px;
+      clip:rect(0,50px,100px,0);/*不支持百分比*/
+      box-sizing:border-box;
+
+      animation: leftRing_animation linear 4s infinite;
+      -webkit-animation: leftRing_animation linear 4s infinite;
+    }
+    .leftMask{
+      position: absolute;
+      width: 50%;
+      height:100%;
+      top: 0;
+      left: 0;
+      background-color: #aaaaaa;/*需和背景色保持一致*/
+
+      animation: disappear linear 4s infinite;
+      -webkit-animation: disappear linear 4s infinite;
+    }
+    @keyframes leftRing_animation {
+      0% {
+       transform: rotate(0deg);
+      }
+      50% {
+       transform: rotate(180deg);
+      }
+      100% {
+       transform: rotate(180deg);
+      }
+    }
+    @-webkit-keyframes leftRing_animation {
+      0% {
+       -webkit-transform: rotate(0deg);
+      }
+      50% {
+       -webkit-transform: rotate(180deg);
+      }
+      100% {
+       -webkit-transform: rotate(180deg);
+      }
+    }
+    @keyframes rightRing_animation {
+      0% {
+       transform: rotate(0deg);
+      }
+      50% {
+       transform: rotate(0deg);
+      }
+      100% {
+       transform: rotate(180deg);
+      }
+    }
+    @-webkit-keyframes rightRing_animation {
+      0% {
+       -webkit-transform: rotate(0deg);
+      }
+      50% {
+       -webkit-transform: rotate(0deg);
+      }
+      100% {
+       -webkit-transform: rotate(180deg);
+      }
+    }
+    @keyframes disappear {
+      0% {
+       opacity: 1;
+      }
+      49.99% {
+       opacity: 1;
+      }
+      50% {
+       opacity: 0;
+      }
+      100% {
+       opacity: 0;
+      }
+    }
+    @-webkit-keyframes disappear {
+      0% {
+       opacity: 1;
+      }
+      49.99% {
+       opacity: 1;
+      }
+      50% {
+       opacity: 0;
+      }
+      100% {
+       opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="rightRing"></div>
+    <div class="rightMask"></div>
+    <div class="leftRing"></div>
+    <div class="leftMask"></div>
+  </div>
+</body>
+</html>
